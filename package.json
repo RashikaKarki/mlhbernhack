@@ -18,6 +18,13 @@
   "homepage": "https://github.com/RashikaKarki/mlhbernhack#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "python-shell": "^1.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3"
   }
 }
