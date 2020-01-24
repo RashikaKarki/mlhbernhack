@@ -1,5 +1,12 @@
 const express = require('express');
+
+
 const app = express();
+
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
 
 const path = require('path');
 const fs = require('fs');
@@ -38,11 +45,16 @@ app.post('/processImage',async (req,res)=>{
     // }
     // ).catch(err=>console.log(err));
 
-   
-    let img = req.body.img;
-    res.json(img);
+
+    console.log(req.body);
+    // let img = req.body.img;
+    // res.json(img);
+    res.send().status(200);
+
     
 });
 
 
+
 app.listen(3000, console.log("Server started!"));
+
