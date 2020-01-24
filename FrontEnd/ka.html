@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>KLearn</title>
+        <link rel='stylesheet' href="bootstrap/css/bootstrap.min.css">        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--Navigational Bar Started-->
+
+
+
+<nav class="navbar navbar-expand-sm  justify-content-between" style="background-color: #45aaf2 !important; opacity:0.6;" >
+            <a class="navbar-brand" href="#">
+                <!--<img src="" alt="logo" style="width:40px;">-->
+                <span style="font-family:Lucida Sans Unicode;" ><h1 style="color:#e345f2 !important; opacity:1 !important;">K<span style="color:#983fd5 !important;">L</span><span style="color:#f8a545 !important;">E</span><span style="color:#9fee00">A</span><span style="color:#176164">R</span><span style="color:#e345f2">N</span></h1></b>
+            </a>         
+            
+            <ul class="navbar-nav mr-auto " >
+<!--<li class="nav-item">
+                <a class="nav-link" href="#">Alphabet</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Maths</a>
+                </li> -->               
+            </ul>
+</nav>
+
+<!--Navigational Bar Ended-->
+
+<script type="text/javascript" src="../WebCamJs/webcam.min.js"></script>
+
+
+<div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div id="my_camera"></div>
+
+                <br/>
+
+                <input type=button value="Take Snapshot" onClick="take_snapshot()">
+
+                <input type="hidden" name="image" class="image-tag">
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div id="results">Your captured image will appear here...</div>
+
+            </div>
+
+            <div class="col-md-12 text-center">
+
+                <br/>
+
+                <input type=button class="btn btn-success" onClick="saveSnap()">Submit</button>
+
+            </div>
+
+        </div>
+
+    
+
+</div>
+
+  
+
+<!-- Configure a few settings and attach camera -->
+
+<script language="JavaScript">
+    
+    Webcam.set({
+
+        width: 490,
+
+        height: 390,
+
+        image_format: 'jpeg',
+
+        jpeg_quality: 90
+
+    });
+
+  
+
+    Webcam.attach( '#my_camera' );
+
+  
+
+    function take_snapshot() {
+        
+
+        Webcam.snap( function(data_uri) {
+            console.log(data_uri)
+            $(".image-tag").val(data_uri);
+
+            document.getElementById('results').innerHTML =  '<img id="imageprev" src="'+ data_uri+'"/>';
+
+        } );
+
+    }
+
+    function saveSnap(){
+ // Get base64 value from <img id='imageprev'> source
+        var base64image = document.getElementById("imageprev").src;
+
+        Webcam.upload( base64image, 'storeImage.php', function(code, text) {
+        console.log('Save successfully');
+        //console.log(text);
+ });
+
+</script>
+
+
+
+
+<!--Footer Started-->
+
+<div class="footer" style="position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #45aaf2;
+    color: white;
+    text-align: center;">
+    <p>@Copyright 2020</p>
+</div>
+
+<!--Footer Ended-->
+
+
+
+</body>
+</html>
