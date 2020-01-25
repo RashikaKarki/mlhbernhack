@@ -21,44 +21,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send("HELLOW WORLD");
 });
-app.post('/processImage', async (req, res) => {
-
-
-    // let runPy = new Promise(function(success, nosuccess) {
-
-    //     const img = req.files[0];
-    //     const spawn = require('child_process').spawn;
-    //     const pythonProcess = spawn('python',["preprocess.py",img]);
-    //     pythonProcess.stdout.on('data', function(data) {
-
-    //         success(data);
-    //     });
-
-    //     pythonProcess.stderr.on('data', (data) => {
-
-    //         nosuccess(data);
-    //     });
-    // });
-
-    // runPy.then((data)=>{
-    //     result = JSON.parse(data.toString())
-    //     res.json(result)
-
-    // }
-    // ).catch(err=>console.log(err));
-
-
-    console.log(req.body);
-    // let img = req.body.img;
-    // res.json(img);
-    res.send().status(200);
-
-
-});
 
 app.post('/preprocessImage', async (req, res) => {
 
     let image = req.body;
+    // console.log(req.body)
+    // image = JSON.parse(image);
     let s = image.image;
     s = s.substring(23)
 

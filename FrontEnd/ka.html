@@ -99,14 +99,18 @@ $( document ).ready(function() {
         //alert(image);
             $.ajax({
 
-        'url' : 'http://localhost:3000/processImage',
+        'url' : 'http://localhost:3000/preprocessImage',
         'type' : 'POST',
         'data' : {
             'image' : image
         },
         'success' : function(data) { 
             // console.log('here.');             
+<<<<<<< HEAD
+           alert('Data: '+data.result);
+=======
           var alphabet=data.result;
+>>>>>>> 28019852995a67c66d9f105741d791d69ac7e42e
         },
         'error' : function(request,error)
         {
@@ -149,25 +153,25 @@ $( document ).ready(function() {
 	</script>
 
 <script>
-		function submit(){
+		// function submit(){
 			
-			image = document.getElementById('image').getAttribute('src').value;
-			fetch('/processImage',
-				{
-			method: 'POST',
-			headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({'img': image})
-			})
+		// 	image = document.getElementById('image').getAttribute('src').value;
+		// 	fetch('/preprocessImage',
+		// 	{
+		// 		method: 'POST',
+		// 		headers: {
+		// 		'Accept': 'application/json',
+		// 		'Content-Type': 'application/json'
+		// 		},
+		// 		body: JSON.stringify({'img': image})
+		// 	})
 			
-			.then(response=>response.json)
-			.then(data=>{
-				console.log(data);
-			})
+		// 	.then(response=>response.json)
+		// 	.then(data=>{
+		// 		console.log(data);
+		// 	})
 
-		}
+		// }
 </script>
 
 
