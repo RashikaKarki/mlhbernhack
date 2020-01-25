@@ -106,11 +106,7 @@ $( document ).ready(function() {
         },
         'success' : function(data) { 
             // console.log('here.');             
-<<<<<<< HEAD
-           alert('Data: '+data.result);
-=======
           var alphabet=data.result;
->>>>>>> 28019852995a67c66d9f105741d791d69ac7e42e
         },
         'error' : function(request,error)
         {
@@ -123,12 +119,12 @@ $( document ).ready(function() {
 
 
 });
-
+</script>
 <script>
     if (alphabet=="chracter_01_ka"){
         document.getElementById("result").innerHTML = "SUCCESS!";
     }
-    {% else %}{
+    else {
         document.getElementById("result").innerHTML = "TRY AGAIN";
     }
 </script>
@@ -145,14 +141,14 @@ $( document ).ready(function() {
 				document.getElementById('results').innerHTML = 
 					'<h2>Here is your image:</h2>' + 
 					'<img id="image" src="'+data_uri+'"/>';
-			} );
+			} )
 		}
 
 
 
 	</script>
 
-<script>
+<!-- <script>
 		// function submit(){
 			
 		// 	image = document.getElementById('image').getAttribute('src').value;
@@ -172,7 +168,7 @@ $( document ).ready(function() {
 		// 	})
 
 		// }
-</script>
+</script> -->
 
 
 
