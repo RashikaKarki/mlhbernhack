@@ -26,6 +26,7 @@ labels = ['none','character_01_ka','character_02_kha']
 
 model = tf.keras.models.load_model('model_5.h5');
 print(model.summary())
+
 img = cv2.imread('tmp.jpg');
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray,30,120)
