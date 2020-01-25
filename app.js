@@ -25,12 +25,13 @@ app.get('/', (req, res) => {
 app.post('/preprocessImage', async (req, res) => {
 
     let image = req.body;
-    // console.log(req.body)
+    console.log(req.body)
     // image = JSON.parse(image);
     let s = image.image;
     s = s.substring(23)
 
     var json = JSON.stringify({'image':s});
+    console.log(json)
     fs.writeFile('myjsonfile.json', json, 'utf8', () => {
         let result = ''
         const spawn = require('child_process').spawn;
@@ -46,7 +47,7 @@ app.post('/preprocessImage', async (req, res) => {
 
         pythonProcess.stderr.on('data', (data) => {
 
-            console.log('Errorrrr: '+data)
+            console.log('Errorrrr: '+ data)
         });
         pythonProcess.stdout.on('end', () => {
             try {

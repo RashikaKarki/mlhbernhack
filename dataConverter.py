@@ -5,13 +5,13 @@ import os
 
 folders = ['data/'+folder for folder in os.listdir('data')]
 
-new_folders = ['processed_data/'+folder for folder in os.listdir('data')]
+new_folders = ['processed_data_2/'+folder for folder in os.listdir('data')]
 for i,folder in enumerate(folders):
     for f in os.listdir(folder):
         img = cv2.imread(os.path.join(folder,f))
         # print(img.shape)
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        img = np.resize(img,(64,64))
+        img = np.resize(img,(128,128))
         edges = cv2.Canny(gray,30,120)
 
         if(not os.path.exists(new_folders[i])):

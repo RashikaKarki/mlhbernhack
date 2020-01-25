@@ -1,181 +1,214 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>KLearn</title>
-        <link rel='stylesheet' href="bootstrap/css/bootstrap.min.css">        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel='stylesheet' href="bootstrap/css/bootstrap.min.css">
+	<script src="jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<style type="text/css">
-		body { font-family: Helvetica, sans-serif; }
-		h2, h3 { margin-top:0; }
-		form { margin-top: 15px; }
-		form > input { margin-right: 15px; }
-		#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+		body {
+			font-family: Helvetica, sans-serif;
+		}
+
+		h2,
+		h3 {
+			margin-top: 0;
+		}
+
+		form {
+			margin-top: 15px;
+		}
+
+		form>input {
+			margin-right: 15px;
+		}
+
+		#results {
+			float: right;
+			margin: 20px;
+			padding: 20px;
+			border: 1px solid;
+			background: #ccc;
+		}
 	</style>
 </head>
+
 <body>
 
 
-<!--Navigational Bar Started-->
+	<!--Navigational Bar Started-->
 
 
 
-<nav class="navbar navbar-expand-sm  justify-content-between" style="background-color: #45aaf2 !important; opacity:0.6;" >
-            <a class="navbar-brand" href="#">
-                <!--<img src="" alt="logo" style="width:40px;">-->
-                <span style="font-family:Lucida Sans Unicode;" ><h1 style="color:#e345f2 !important; opacity:1 !important;">K<span style="color:#983fd5 !important;">L</span><span style="color:#f8a545 !important;">E</span><span style="color:#9fee00">A</span><span style="color:#176164">R</span><span style="color:#e345f2">N</span></h1></b>
-            </a>         
-            
-            <ul class="navbar-nav mr-auto " >
-<!--<li class="nav-item">
+	<nav class="navbar navbar-expand-sm  justify-content-between"
+		style="background-color: #45aaf2 !important; opacity:0.6;">
+		<a class="navbar-brand" href="#">
+			<!--<img src="" alt="logo" style="width:40px;">-->
+			<span style="font-family:Lucida Sans Unicode;">
+				<h1 style="color:#e345f2 !important; opacity:1 !important;">K<span
+						style="color:#983fd5 !important;">L</span><span style="color:#f8a545 !important;">E</span><span
+						style="color:#9fee00">A</span><span style="color:#176164">R</span><span
+						style="color:#e345f2">N</span></h1></b>
+		</a>
+
+		<ul class="navbar-nav mr-auto ">
+			<!--<li class="nav-item">
                 <a class="nav-link" href="#">Alphabet</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Maths</a>
-                </li> -->               
-            </ul>
-</nav>
+                </li> -->
+		</ul>
+	</nav>
 
-<!--Navigational Bar Ended-->
+	<!--Navigational Bar Ended-->
 
 
 
-<!--Importing Webcam Package-->
+	<!--Importing Webcam Package-->
 
 	<script type="text/javascript" src="../WebCamJs/webcam.min.js"></script>
-<br>
-			<br>
+	<br>
+	<br>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-7">
-            <center>
-			
-               <video id="video" width="650" height="500" autoplay>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7">
+				<center>
+
+					<video id="video" width="650" height="500" autoplay >
 						<source src="video/ka.mp4" type="video/mp4">
-				</video>
-            </center>
-            <br>
-            <div id="#result" style="font-size: 60px;">
-            </div>
-        </div>
-		<div class="col-sm-5">
-			<div class="container">
-				<div class="row">
-					<div id="my_camera"></div>
-					<form>
-					
-						<input type='button' value="Take Snapshot" id='takeSnap'> 
-                       <!-- onClick="take_snapshot()"-->
-					</form>
-					<form method="post" enctype="multipart/form-data">
-						<input type='button' value="Submit" id='dataSubmit' >		
-					</form>
-					<div id="results">Your captured image will appear here...</div>
+					</video>
+				</center>
+				<br>
+				<div id="result" style="font-size: 60px;">
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<div class="container">
+					<div class="row">
+						<div id="my_camera"></div>
+						<form>
+
+							<input type='button' value="Take Snapshot" id='takeSnap'>
+							<!-- onClick="take_snapshot()"-->
+						</form>
+						<form method="post" enctype="multipart/form-data">
+							<input type='button' value="Submit" id='dataSubmit'>
+						</form>
+						<div id="results">Your captured image will appear here...</div>
 						<script language="JavaScript">
-		Webcam.set({
-			width: 360,
-			height: 360,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.attach( '#my_camera' );
-	</script>
+							Webcam.set({
+								width: 360,
+								height: 360,
+								image_format: 'jpeg',
+								jpeg_quality: 90
+							});
+							Webcam.attach('#my_camera');
+						</script>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>	
-<script>
-$( document ).ready(function() {
-    $("#takeSnap").click(function(){
-        take_snapshot();
-    });
+	<script>
+		$(document).ready(function () {
+			$("#takeSnap").click(function () {
+				take_snapshot();
+			});
 
-    $("#dataSubmit").click(function(){
-        var image=$("#image").attr('src');
-        //alert(image);
-            $.ajax({
+			$("#dataSubmit").click(function () {
 
-        'url' : 'http://localhost:3000/preprocessImage',
-        'type' : 'POST',
-        'data' : {
-            'image' : image
-        },
-        'success' : function(data) { 
-            // console.log('here.');             
-          var alphabet=data.result;
-        },
-        'error' : function(request,error)
-        {
-            console.log('here...');    
-            alert("Request: "+JSON.stringify(request));
-        }
-    });
-    });
+				var image = $("#image").attr('src');
+				document.getElementById("result").innerHTML = "Please Wait!";
+				//alert(image);
+				$.ajax({
+
+					'url': 'http://localhost:3000/preprocessImage',
+					'type': 'POST',
+					'data': {
+						'image': image
+					},
+					'success': function (data) {
+						// console.log('here.');    
+						printResult(data.result);
+						
+					},
+					'error': function (request, error) {
+						console.log('here...');
+						console.log("Request: " + JSON.stringify(request));
+						document.getElementById("result").innerHTML = "";
+					}
+				});
+			});
 
 
 
-});
-</script>
-<script>
-    if (alphabet=="chracter_01_ka"){
-        document.getElementById("result").innerHTML = "SUCCESS!";
-    }
-    else {
-        document.getElementById("result").innerHTML = "TRY AGAIN";
-    }
-</script>
+		});
 
-</script>
+		function printResult(data){
+			if (data == "ka") {
+				document.getElementById("result").innerHTML = "SUCCESS!";
+			}
+			else {
+				document.getElementById("result").innerHTML = "TRY AGAIN";
+			}
+		}
+	</script>
+	<script>
+
+	</script>
+
+
 	<!-- Code to handle taking the snapshot and displaying it locally -->
 	<script language="JavaScript">
 		function take_snapshot() {
-		
+
 			// take snapshot and get image data
-			Webcam.snap( function(data_uri) {
-            	console.log(data_uri)
+			Webcam.snap(function (data_uri) {
+				console.log(data_uri)
 				// display results in page
-				document.getElementById('results').innerHTML = 
-					'<h2>Here is your image:</h2>' + 
-					'<img id="image" src="'+data_uri+'"/>';
-			} )
+				document.getElementById('results').innerHTML =
+					'<h2>Here is your image:</h2>' +
+					'<img id="image" src="' + data_uri + '"/>';
+			});
 		}
 
 
 
 	</script>
 
-<!-- <script>
-		// function submit(){
+	<!-- <script>
+		function submit(){
 			
-		// 	image = document.getElementById('image').getAttribute('src').value;
-		// 	fetch('/preprocessImage',
-		// 	{
-		// 		method: 'POST',
-		// 		headers: {
-		// 		'Accept': 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 		},
-		// 		body: JSON.stringify({'img': image})
-		// 	})
+			image = document.getElementById('image').getAttribute('src').value;
+			fetch('/processImage',
+				{
+			method: 'POST',
+			headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({'img': image})
+			})
 			
-		// 	.then(response=>response.json)
-		// 	.then(data=>{
-		// 		console.log(data);
-		// 	})
+			.then(response=>response.json)
+			.then(data=>{
+				console.log(data);
+			})
 
-		// }
+		}
 </script> -->
 
 
 
-	
-<!--Footer Started-->
 
-<div class="footer" style="position: fixed;
+	<!--Footer Started-->
+
+	<div class="footer" style="position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -183,14 +216,14 @@ $( document ).ready(function() {
     background-color: #45aaf2;
     color: white;
     text-align: center;">
-        <p>@Copyright 2020</p>
-</div>
+		<p>@Copyright 2020</p>
+	</div>
 
-<!--Footer Ended-->
+	<!--Footer Ended-->
 
-	
 
-	
+
+
 </body>
-</html>
 
+</html>

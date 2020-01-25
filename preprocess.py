@@ -8,33 +8,33 @@ import base64
 import json
 
 # labels = [f for f in os.listdir('processed_data')]
-labels = ['none','character_01_ka','character_02_kha']
+labels = ['ka','kha']
 
 
-# with open('myjsonfile.json') as f:
-#   data = json.load(f)
-
-# # data = str(data)
-# data = data['image']
-
-# # print(data)
+with open('myjsonfile.json') as f:
+  data = json.load(f)
 
 
-# with open("tmp.jpg", "wb") as fh:
-#     fh.write(base64.decodebytes(data.encode()))
+data = data['image']
 
 
-model = tf.keras.models.load_model('model_5.h5');
-print(model.summary())
+
+
+with open("tmp.jpg", "wb") as fh:
+    fh.write(base64.decodebytes(data.encode()))
+
+
+model = tf.keras.models.load_model('model_py.h5');
+
 
 img = cv2.imread('tmp.jpg');
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray,30,120)
 # cv2.imshow("widnow",edges)
-img = cv2.resize(edges,(64,64))
+img = cv2.resize(edges,(128,128))
 img = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
 img = np.array(img).astype('float32')
-img = np.reshape(img,(1,64,64,3))
+img = np.reshape(img,(1,128,128,3))
 
 
 
@@ -54,6 +54,6 @@ result = np.argmax(result)
 letter = labels[result]
 results = json.dumps({"result":letter})
 print(results)
-sys.stdout.flush()
+# sys.stdout.flush()
 
 #Send letter to server
