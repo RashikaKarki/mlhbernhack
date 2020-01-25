@@ -53,8 +53,13 @@
         <div class="col-sm-7">
             <center>
 			
-                <iframe width="100%" height="400px" src="https://www.youtube.com/embed/y8MQQUZ3Pz0?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               <video id="video" width="650" height="500" autoplay>
+						<source src="video/kha.mp4" type="video/mp4">
+				</video>
             </center>
+            <br>
+            <div id="#result" style="font-size: 60px;">
+            </div>
         </div>
 		<div class="col-sm-5">
 			<div class="container">
@@ -101,7 +106,7 @@ $( document ).ready(function() {
         },
         'success' : function(data) { 
             // console.log('here.');             
-           alert('Data: '+data);
+          var alphabet=data.result;
         },
         'error' : function(request,error)
         {
@@ -114,6 +119,16 @@ $( document ).ready(function() {
 
 
 });
+
+<script>
+    if (alphabet=="chracter_01_kha"){
+        document.getElementById("result").innerHTML = "SUCCESS!";
+    }
+    {% else %}{
+        document.getElementById("result").innerHTML = "TRY AGAIN";
+    }
+</script>
+
 </script>
 	<!-- Code to handle taking the snapshot and displaying it locally -->
 	<script language="JavaScript">
